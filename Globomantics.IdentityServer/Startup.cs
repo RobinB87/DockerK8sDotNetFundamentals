@@ -27,7 +27,6 @@ namespace Globomantics.IdentityServer
         {
             Configuration = configuration;
             _assembly = GetType().Assembly.GetName();
-
         }
 
         public IConfiguration Configuration { get; }
