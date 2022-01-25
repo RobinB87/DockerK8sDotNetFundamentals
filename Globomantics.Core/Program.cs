@@ -20,7 +20,12 @@ namespace Globomantics.Core
                         .ReadFrom.Configuration(context.Configuration)
                         .Enrich.FromLogContext()
                         .WriteTo.Console()
-                        .WriteTo.Seq("http://localhost:5341");
+
+                        //.WriteTo.Seq("http://localhost:5341");
+
+                        // Docker Desktop provides a DNS name that allows us to refer from the container
+                        // to the host (this will only work for local development):
+                        .WriteTo.Seq("http://host.docker.internal:5341");
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
