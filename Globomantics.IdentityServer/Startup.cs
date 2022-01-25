@@ -100,20 +100,28 @@ namespace Globomantics.IdentityServer
                     options.UserInteraction.LoginUrl = "/Account/Login";
                     options.UserInteraction.LogoutUrl = "/Account/Logout";
                 })
+
+                // Apply in memory versions of the database logic
+                .AddInMemoryApiResources(InitialConfiguration.GetApis())
+                .AddInMemoryApiScopes(InitialConfiguration.GetApiScopes())
+                .AddInMemoryIdentityResources(InitialConfiguration.GetIdentityResources())
+                .AddInMemoryClients(InitialConfiguration.GetClients())
+
                 //.AddInMemoryApiResources(InitialConfiguration.GetApis())
                 //.AddInMemoryApiScopes(InitialConfiguration.GetApiScopes())
                 //.AddInMemoryIdentityResources(InitialConfiguration.GetIdentityResources())
                 //.AddInMemoryClients(InitialConfiguration.GetClients())
-                .AddConfigurationStore(options =>
-                {
-                    options.ConfigureDbContext = b =>
-                        b.UseSqlServer(connStr, sql => sql.MigrationsAssembly(migrationsAssembly));
-                })
-                .AddOperationalStore(options =>
-                {
-                    options.ConfigureDbContext = b =>
-                        b.UseSqlServer(connStr, sql => sql.MigrationsAssembly(migrationsAssembly));
-                })
+                //.AddConfigurationStore(options =>
+                //{
+                //    options.ConfigureDbContext = b =>
+                //        b.UseSqlServer(connStr, sql => sql.MigrationsAssembly(migrationsAssembly));
+                //})
+                //.AddOperationalStore(options =>
+                //{
+                //    options.ConfigureDbContext = b =>
+                //        b.UseSqlServer(connStr, sql => sql.MigrationsAssembly(migrationsAssembly));
+                //})
+
                 .AddDeveloperSigningCredential()
                 .AddAspNetIdentity<CustomUser>();
 
@@ -122,8 +130,8 @@ namespace Globomantics.IdentityServer
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.ApplyDatabaseSchema();
-            app.PopulateDatabaseIfEmpty();
+            //app.ApplyDatabaseSchema();
+            //app.PopulateDatabaseIfEmpty();
 
             var forwardedHeaderOptions = new ForwardedHeadersOptions
             {
