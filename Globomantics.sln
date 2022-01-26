@@ -28,6 +28,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{CE71D730-CC1E-440B-8344-F8D69078B45D}"
 	ProjectSection(SolutionItems) = preProject
 		nginx\id-local.conf = nginx\id-local.conf
+		nginx\id-local.crt = nginx\id-local.crt
+		nginx\id-local.key = nginx\id-local.key
+		nginx\id-local.pfx = nginx\id-local.pfx
 		nginx\nginx.Dockerfile = nginx\nginx.Dockerfile
 		nginx\nginx.local.conf = nginx\nginx.local.conf
 	EndProjectSection
