@@ -178,6 +178,17 @@ WHERE UserId = @UserId",
             }
 
             // TODO: Remove - temp user as db is not working yet
+            if (string.Equals(normalizedUserName, "kim@mars.com", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return new CustomUser
+                {
+                    LoginName = "kim@mars.com",
+                    Email = "kim@mars.com",
+                    PasswordHash = "BvJyJI8wmY9r/4NgVud2EwwbDqNzK9UQ3+Oxy/erYoq3aUm+E1wCgwkyvkagdkucs/LaBS56ddTWS1xogL7msAeM0We37suklRIt6QFSWlqef//SxDcKO8I7bpConj/0ydGu8ix9Fpwi1R5IoEjHns+qfR6hII1Rn0POHTz6UdA=",
+                    EmailConfirmed = true
+                };
+            }
+
             if (string.Equals(normalizedUserName, "stanley@mars.com", StringComparison.InvariantCultureIgnoreCase))
             {
                 return new CustomUser
