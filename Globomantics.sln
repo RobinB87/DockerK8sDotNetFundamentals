@@ -27,6 +27,7 @@ Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-co
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{CE71D730-CC1E-440B-8344-F8D69078B45D}"
 	ProjectSection(SolutionItems) = preProject
+		id-local.conf = id-local.conf
 		nginx\nginx.Dockerfile = nginx\nginx.Dockerfile
 		nginx\nginx.local.conf = nginx\nginx.local.conf
 	EndProjectSection
