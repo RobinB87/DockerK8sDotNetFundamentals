@@ -24,6 +24,6 @@ services:
     image: datalust/seq
     restart: unless-stopped
     ports: 
-      - "5341:80"
+      - "5342:80"
     environment:
       - ACCEPT_EULA=Y
