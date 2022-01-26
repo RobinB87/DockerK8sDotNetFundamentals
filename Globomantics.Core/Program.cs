@@ -25,7 +25,9 @@ namespace Globomantics.Core
 
                         // Docker Desktop provides a DNS name that allows us to refer from the container
                         // to the host (this will only work for local development):
-                        .WriteTo.Seq("http://host.docker.internal:5341");
+                        //.WriteTo.Seq("http://host.docker.internal:5341");
+
+                        .WriteTo.Seq("http://globoseq");
                 })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
