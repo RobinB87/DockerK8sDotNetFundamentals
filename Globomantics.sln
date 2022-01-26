@@ -25,10 +25,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Globomantics.Api", "Globoma
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{4AD13EFA-6414-4B5C-8670-6FCC31F04BC9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{FACE3F0E-2FBD-4257-BD76-1051278CF60C}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{CE71D730-CC1E-440B-8344-F8D69078B45D}"
 	ProjectSection(SolutionItems) = preProject
-		nginx.Dockerfile = nginx.Dockerfile
-		nginx.local.conf = nginx.local.conf
+		nginx\nginx.Dockerfile = nginx\nginx.Dockerfile
+		nginx\nginx.local.conf = nginx\nginx.local.conf
 	EndProjectSection
 EndProject
 Global
