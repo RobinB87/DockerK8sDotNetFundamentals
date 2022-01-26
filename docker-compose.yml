@@ -27,3 +27,9 @@ services:
       - "5342:80"
     environment:
       - ACCEPT_EULA=Y
+
+  globosmtp:
+    image: rnwood/smtp4dev
+    restart: always
+    ports: 
+      - "5010:80"

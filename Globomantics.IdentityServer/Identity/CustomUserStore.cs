@@ -176,6 +176,17 @@ WHERE UserId = @UserId",
             {
                 throw new ArgumentNullException(nameof(normalizedUserName));
             }
+
+            // TODO: Remove - temp user as db is not working yet
+            if (string.Equals(normalizedUserName, "stanley@mars.com", StringComparison.InvariantCultureIgnoreCase))
+            {
+                return new CustomUser
+                {
+                    LoginName = "stanley@mars.com",
+                    Email = "stanley@mars.com",
+                    EmailConfirmed = true
+                };
+            }
             
             var result = await _db.QuerySingleOrDefaultAsync<CustomUser>(
                 "SELECT * FROM GlobomanticsUser WHERE LoginName = @LoginName",
