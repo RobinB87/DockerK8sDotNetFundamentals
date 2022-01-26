@@ -8,7 +8,7 @@ services:
     depends_on:
       - globomantics.identityserver
     ports:
-      - "5200:5100"
+      - "44395:443"
 
   globomantics.identityserver:
     image: ${DOCKER_REGISTRY-}globomanticsidentityserver
