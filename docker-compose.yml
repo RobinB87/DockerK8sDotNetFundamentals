@@ -20,6 +20,15 @@ services:
     ports:
       - "5000:5000"
       
+  globomantics.ui:
+    build:
+      context: .
+      dockerfile: Globomantics.Core/Dockerfile
+    environment:
+      - ASPNETCORE_URLS=http://*:5005
+    ports:
+      - "5005:5005"
+
   globoseq:
     image: datalust/seq
     restart: unless-stopped
