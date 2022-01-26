@@ -133,6 +133,7 @@ namespace Globomantics.IdentityServer
             //app.ApplyDatabaseSchema();
             //app.PopulateDatabaseIfEmpty();
 
+            // NGINX forwarded http headers, representing the originally requested hostname etc
             var forwardedHeaderOptions = new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
