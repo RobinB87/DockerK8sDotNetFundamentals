@@ -67,5 +67,16 @@ services:
     networks:
       - globonet
 
+  globosql:
+    image: mcr.microsoft.com/mssql/server
+    restart: always
+    ports:
+      - "1435:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Sql0nLinux!!#
+    networks:
+      - globonet
+
 networks:
   globonet: {}

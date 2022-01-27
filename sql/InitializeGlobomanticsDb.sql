@@ -153,7 +153,7 @@ GO
 ----------------------------------------------------------------------------
 USE master;
 GO
-CREATE LOGIN [globo_dbuser] WITH PASSWORD=N'SqlonLinux?!', CHECK_EXPIRATION=OFF, CHECK_POLICY=ON;
+CREATE LOGIN [globo_dbuser] WITH PASSWORD=N'Sql0nLinux!!#', CHECK_EXPIRATION=OFF, CHECK_POLICY=ON;
 GO
 USE Globomantics;
 GO

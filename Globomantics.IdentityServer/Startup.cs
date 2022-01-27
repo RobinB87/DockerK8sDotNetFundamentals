@@ -1,7 +1,3 @@
-using System;
-using System.Data;
-using System.Net.Http;
-using System.Reflection;
 using Globomantics.IdentityServer.Identity;
 using Globomantics.IdentityServer.Initialization;
 using Globomantics.IdentityServer.Services;
@@ -17,6 +13,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 using Polly;
 using Serilog;
+using System;
+using System.Data;
+using System.Net.Http;
+using System.Reflection;
 
 namespace Globomantics.IdentityServer
 {
@@ -102,26 +102,20 @@ namespace Globomantics.IdentityServer
                 })
 
                 // Apply in memory versions of the database logic
-                .AddInMemoryApiResources(InitialConfiguration.GetApis())
-                .AddInMemoryApiScopes(InitialConfiguration.GetApiScopes())
-                .AddInMemoryIdentityResources(InitialConfiguration.GetIdentityResources())
-                .AddInMemoryClients(InitialConfiguration.GetClients())
-
                 //.AddInMemoryApiResources(InitialConfiguration.GetApis())
                 //.AddInMemoryApiScopes(InitialConfiguration.GetApiScopes())
                 //.AddInMemoryIdentityResources(InitialConfiguration.GetIdentityResources())
                 //.AddInMemoryClients(InitialConfiguration.GetClients())
-                //.AddConfigurationStore(options =>
-                //{
-                //    options.ConfigureDbContext = b =>
-                //        b.UseSqlServer(connStr, sql => sql.MigrationsAssembly(migrationsAssembly));
-                //})
-                //.AddOperationalStore(options =>
-                //{
-                //    options.ConfigureDbContext = b =>
-                //        b.UseSqlServer(connStr, sql => sql.MigrationsAssembly(migrationsAssembly));
-                //})
-
+                .AddConfigurationStore(options =>
+                {
+                    options.ConfigureDbContext = b =>
+                        b.UseSqlServer(connStr, sql => sql.MigrationsAssembly(migrationsAssembly));
+                })
+                .AddOperationalStore(options =>
+                {
+                    options.ConfigureDbContext = b =>
+                        b.UseSqlServer(connStr, sql => sql.MigrationsAssembly(migrationsAssembly));
+                })
                 .AddDeveloperSigningCredential()
                 .AddAspNetIdentity<CustomUser>();
 
@@ -130,8 +124,8 @@ namespace Globomantics.IdentityServer
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            //app.ApplyDatabaseSchema();
-            //app.PopulateDatabaseIfEmpty();
+            app.ApplyDatabaseSchema();
+            app.PopulateDatabaseIfEmpty();
 
             // NGINX forwarded http headers, representing the originally requested hostname etc
             var forwardedHeaderOptions = new ForwardedHeadersOptions
