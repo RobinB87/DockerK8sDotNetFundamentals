@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Dapper;
+using Microsoft.AspNetCore.Identity;
+using Serilog;
+using System;
 using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
-using Dapper;
-using Microsoft.AspNetCore.Identity;
-using Serilog;
 
 namespace Globomantics.IdentityServer.Identity
 {
-    public partial class CustomUserStore : IUserPasswordStore<CustomUser>, 
+    public partial class CustomUserStore : IUserPasswordStore<CustomUser>,
                                    IUserEmailStore<CustomUser>,
                                    IUserSecurityStampStore<CustomUser>
     {
@@ -162,17 +162,6 @@ WHERE UserId = @UserId",
             {
                 throw new ArgumentNullException(nameof(userId));
             }
-            if (userId == "3")
-            {
-                return new CustomUser
-                {
-                    UserId = 3,
-                    LoginName = "kim@mars.com",
-                    Email = "kim@mars.com",
-                    PasswordHash = "BvJyJI8wmY9r/4NgVud2EwwbDqNzK9UQ3+Oxy/erYoq3aUm+E1wCgwkyvkagdkucs/LaBS56ddTWS1xogL7msAeM0We37suklRIt6QFSWlqef//SxDcKO8I7bpConj/0ydGu8ix9Fpwi1R5IoEjHns+qfR6hII1Rn0POHTz6UdA=",
-                    EmailConfirmed = true
-                };
-            }
 
             return await _db.QuerySingleOrDefaultAsync<CustomUser>(
                 "SELECT * FROM GlobomanticsUser WHERE UserId = @userId",
@@ -188,28 +177,6 @@ WHERE UserId = @UserId",
                 throw new ArgumentNullException(nameof(normalizedUserName));
             }
 
-            // TODO: Remove - temp user as db is not working yet
-            if (string.Equals(normalizedUserName, "kim@mars.com", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return new CustomUser
-                {
-                    LoginName = "kim@mars.com",
-                    Email = "kim@mars.com",
-                    PasswordHash = "BvJyJI8wmY9r/4NgVud2EwwbDqNzK9UQ3+Oxy/erYoq3aUm+E1wCgwkyvkagdkucs/LaBS56ddTWS1xogL7msAeM0We37suklRIt6QFSWlqef//SxDcKO8I7bpConj/0ydGu8ix9Fpwi1R5IoEjHns+qfR6hII1Rn0POHTz6UdA=",
-                    EmailConfirmed = true
-                };
-            }
-
-            if (string.Equals(normalizedUserName, "stanley@mars.com", StringComparison.InvariantCultureIgnoreCase))
-            {
-                return new CustomUser
-                {
-                    LoginName = "stanley@mars.com",
-                    Email = "stanley@mars.com",
-                    EmailConfirmed = true
-                };
-            }
-            
             var result = await _db.QuerySingleOrDefaultAsync<CustomUser>(
                 "SELECT * FROM GlobomanticsUser WHERE LoginName = @LoginName",
                 new { LoginName = normalizedUserName });
@@ -361,6 +328,6 @@ WHERE UserId = @UserId",
             }
         }
         public void Dispose() { _disposed = true; }
-        
+
     }
 }
