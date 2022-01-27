@@ -161,7 +161,18 @@ WHERE UserId = @UserId",
             if (userId == null)
             {
                 throw new ArgumentNullException(nameof(userId));
-            }            
+            }
+            if (userId == "3")
+            {
+                return new CustomUser
+                {
+                    UserId = 3,
+                    LoginName = "kim@mars.com",
+                    Email = "kim@mars.com",
+                    PasswordHash = "BvJyJI8wmY9r/4NgVud2EwwbDqNzK9UQ3+Oxy/erYoq3aUm+E1wCgwkyvkagdkucs/LaBS56ddTWS1xogL7msAeM0We37suklRIt6QFSWlqef//SxDcKO8I7bpConj/0ydGu8ix9Fpwi1R5IoEjHns+qfR6hII1Rn0POHTz6UdA=",
+                    EmailConfirmed = true
+                };
+            }
 
             return await _db.QuerySingleOrDefaultAsync<CustomUser>(
                 "SELECT * FROM GlobomanticsUser WHERE UserId = @userId",

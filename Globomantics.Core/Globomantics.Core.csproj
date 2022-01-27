@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Dockerfile.original" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.78" />
     <PackageReference Include="IdentityModel" Version="4.5.0" />
     <PackageReference Include="IdentityModel.AspNetCore" Version="3.0.0" />
