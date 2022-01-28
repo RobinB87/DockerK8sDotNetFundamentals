@@ -11,16 +11,16 @@ spec:
     metadata:
       labels:
         app: globoseq-app
-    spec:      
+    spec:
       containers:
-      - name: seq
-        image: datalust/seq:latest
-        ports:
-        - containerPort: 5341
-        - containerPort: 80
-        env:
-        - name: ACCEPT_EULA
-          value: "Y"        
+        - name: seq
+          image: datalust/seq:latest
+          ports:
+            - containerPort: 5341
+            - containerPort: 80
+          env:
+            - name: ACCEPT_EULA
+              value: "Y"
 ---
 apiVersion: v1
 kind: Service
@@ -28,13 +28,14 @@ metadata:
   name: globoseq-service
 spec:
   selector:
-    app: globoseq-app  
-  type: ClusterIP  
+    app: globoseq-app
+  type: NodePort
   ports:
-    - protocol: TCP 
+    - protocol: TCP
       port: 80
-      targetPort: 80  
-  
+      targetPort: 80
+      nodePort: 31534
+
 ---
 apiVersion: v1
 kind: Service
