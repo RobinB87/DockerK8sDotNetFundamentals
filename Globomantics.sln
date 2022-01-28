@@ -39,6 +39,22 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "nginx", "nginx", "{CE71D730
 		nginx\www-local.pfx = nginx\www-local.pfx
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "k8s", "k8s", "{806A8F34-4CE1-4AD4-A959-31578DC92F07}"
+	ProjectSection(SolutionItems) = preProject
+		k8s\globo-ingress.yml = k8s\globo-ingress.yml
+		k8s\globois4.configmap.yml = k8s\globois4.configmap.yml
+		k8s\globois4.yml = k8s\globois4.yml
+		k8s\globoseq-initial.yml = k8s\globoseq-initial.yml
+		k8s\globoseq.yml = k8s\globoseq.yml
+		k8s\globosmtp-initial.yml = k8s\globosmtp-initial.yml
+		k8s\globosmtp.yml = k8s\globosmtp.yml
+		k8s\globosql.yml = k8s\globosql.yml
+		k8s\id-local.conf = k8s\id-local.conf
+		k8s\id-local.crt = k8s\id-local.crt
+		k8s\id-local.key = k8s\id-local.key
+		k8s\id-local.pfx = k8s\id-local.pfx
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
