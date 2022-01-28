@@ -3,6 +3,10 @@ kind: Ingress
 metadata:
   name: globo-ingress
 spec:
+  tls:
+    - host:
+        - id.local.com
+      secretName: idlocal-tls
   rules:
     - host: seq.local.com
       http:

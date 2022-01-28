@@ -35,7 +35,7 @@ metadata:
 spec:
   selector:
     app: globosmtp
-  type: NodePort
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 80

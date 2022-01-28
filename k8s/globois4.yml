@@ -51,9 +51,8 @@ metadata:
 spec:
   selector:
     app: globomantics-identity
-  type: NodePort
+  type: ClusterIP
   ports:
     - protocol: TCP
       port: 5000
       targetPort: 5000
-      nodePort: 31500
